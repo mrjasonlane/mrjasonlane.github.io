@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jason Lane – IT Field Technician</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050810;--bg2:#090d1a;--bg3:#0d1325;
+  --accent:#00d4ff;--accent2:#0077ff;--glow:rgba(0,212,255,0.12);
+  --text:#e8edf5;--muted:#8a96b0;
+  --border:rgba(0,212,255,0.12);--border-b:rgba(0,212,255,0.35);
+  --card:rgba(13,19,37,0.9);
+  --fd:'Syne',sans-serif;--fm:'Space Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--fd);overflow-x:hidden;line-height:1.6}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,212,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
+section{position:relative;z-index:1}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;background:rgba(5,8,16,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.logo{font-family:var(--fm);font-size:1rem;font-weight:700;color:var(--accent);letter-spacing:.05em;text-decoration:none}
+.logo span{color:var(--text)}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav a{color:var(--muted);text-decoration:none;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+nav a:hover{color:var(--accent)}
+.nav-cta{background:var(--accent);color:#000!important;padding:.45rem 1.2rem;border-radius:2px;font-weight:700}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 4rem 4rem;position:relative;overflow:hidden}
+.orb{position:absolute;border-radius:50%;pointer-events:none}
+.o1{top:-20%;right:-10%;width:700px;height:700px;background:radial-gradient(circle,rgba(0,119,255,.12) 0%,transparent 65%)}
+.o2{bottom:-10%;left:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(0,212,255,.07) 0%,transparent 65%)}
+.hero-inner{max-width:760px;z-index:1}
+.hero-label{font-family:var(--fm);font-size:.7rem;color:var(--accent);letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.2rem;display:flex;align-items:center;gap:.75rem}
+.hero-label::before{content:'';width:32px;height:1px;background:var(--accent)}
+.hero h1{font-size:clamp(2.8rem,6vw,4.8rem);font-weight:800;line-height:1.0;letter-spacing:-.02em;margin-bottom:1.25rem}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-bio{font-size:1.05rem;color:var(--muted);max-width:560px;margin-bottom:2.5rem;line-height:1.75}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3.5rem}
+.btn-p{background:var(--accent);color:#000;padding:.85rem 2rem;font-family:var(--fm);font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:opacity .2s,transform .2s;display:inline-block}
+.btn-p:hover{opacity:.85;transform:translateY(-1px)}
+.btn-o{background:transparent;color:var(--accent);padding:.85rem 2rem;font-family:var(--fm);font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--border-b);border-radius:2px;transition:background .2s,transform .2s;display:inline-block}
+.btn-o:hover{background:var(--glow);transform:translateY(-1px)}
+.hero-chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{font-family:var(--fm);font-size:.62rem;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--border);padding:.3rem .75rem;border-radius:2px}
+
+.wrap{padding:6rem 4rem}
+.wrap-alt{background:var(--bg2)}
+.sec-tag{font-family:var(--fm);font-size:.68rem;color:var(--accent);letter-spacing:.2em;text-transform:uppercase;display:flex;align-items:center;gap:.6rem;margin-bottom:1rem}
+.sec-tag::before{content:'';width:24px;height:1px;background:var(--accent)}
+.sec-h{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:.75rem}
+.sec-sub{font-size:.95rem;color:var(--muted);max-width:500px;line-height:1.7;margin-bottom:3rem}
+
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5px;background:var(--border);border:1px solid var(--border)}
+.skill-card{background:var(--card);padding:2rem;position:relative;transition:background .3s}
+.skill-card:hover{background:rgba(0,212,255,.05)}
+.skill-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--accent);transition:height .3s}
+.skill-card:hover::before{height:100%}
+.sk-label{font-family:var(--fm);font-size:.65rem;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1rem}
+.sk-items{display:flex;flex-wrap:wrap;gap:.4rem}
+.sk-item{font-size:.75rem;color:var(--muted);background:rgba(0,212,255,.06);border:1px solid var(--border);padding:.25rem .65rem;border-radius:2px}
+
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-item{display:grid;grid-template-columns:200px 1fr;gap:2.5rem;padding:2.5rem 0;border-bottom:1px solid var(--border);position:relative}
+.tl-item:first-child{padding-top:0}
+.tl-item::before{content:'';position:absolute;left:200px;top:0;bottom:0;width:1px;background:var(--border);transform:translateX(calc(-2.5rem/2 + .5px))}
+.tl-date{font-family:var(--fm);font-size:.72rem;color:var(--accent);letter-spacing:.08em;line-height:1.6;padding-top:.15rem}
+.tl-co{font-size:.78rem;color:var(--muted);margin-top:.25rem}
+.tl-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);position:absolute;left:200px;top:2.7rem;transform:translateX(calc(-2.5rem/2 - 5px + .5px));z-index:2}
+.tl-body h3{font-size:1rem;font-weight:600;margin-bottom:.25rem}
+.tl-site{font-family:var(--fm);font-size:.68rem;color:var(--accent);letter-spacing:.08em;margin-bottom:1rem;text-transform:uppercase}
+.tl-bullets{list-style:none;display:flex;flex-direction:column;gap:.45rem}
+.tl-bullets li{font-size:.85rem;color:var(--muted);line-height:1.6;padding-left:1rem;position:relative}
+.tl-bullets li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:.7rem;top:.1rem}
+
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.cert-card{background:var(--card);border:1px solid var(--border);padding:1.5rem;transition:border-color .2s}
+.cert-card:hover{border-color:var(--border-b)}
+.cert-icon{font-size:1.4rem;color:var(--accent);margin-bottom:.75rem}
+.cert-card h4{font-size:.88rem;font-weight:600;margin-bottom:.3rem;line-height:1.3}
+.cert-card p{font-size:.75rem;color:var(--muted)}
+
+.contact-row{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.c-info p{color:var(--muted);font-size:.95rem;margin-top:.75rem;line-height:1.7;max-width:380px}
+.c-items{margin-top:2rem;display:flex;flex-direction:column;gap:.9rem}
+.c-item{display:flex;align-items:center;gap:.75rem;font-size:.88rem;color:var(--muted)}
+.c-icon{width:36px;height:36px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--accent);flex-shrink:0}
+.c-form{background:var(--card);border:1px solid var(--border);padding:2rem}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.f-grp{margin-bottom:1.1rem}
+.f-grp label{display:block;font-family:var(--fm);font-size:.62rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.45rem}
+.f-grp input,.f-grp textarea,.f-grp select{width:100%;background:rgba(0,0,0,.4);border:1px solid var(--border);color:var(--text);padding:.65rem .9rem;font-family:var(--fd);font-size:.87rem;border-radius:2px;outline:none;transition:border-color .2s;appearance:none}
+.f-grp input:focus,.f-grp textarea:focus,.f-grp select:focus{border-color:var(--border-b)}
+.f-grp textarea{resize:vertical;min-height:100px}
+.f-grp select option{background:#090d1a}
+.f-sub{width:100%;background:var(--accent);color:#000;border:none;padding:.85rem;font-family:var(--fm);font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:opacity .2s;margin-top:.25rem}
+.f-sub:hover{opacity:.85}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 4rem;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
+.f-logo{font-family:var(--fm);font-size:.95rem;color:var(--accent);font-weight:700}
+footer p{font-size:.75rem;color:var(--muted)}
+.f-links{display:flex;gap:1.5rem;list-style:none}
+.f-links a{font-size:.75rem;color:var(--muted);text-decoration:none;text-transform:uppercase;letter-spacing:.08em;transition:color .2s}
+.f-links a:hover{color:var(--accent)}
+
+.fi{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.fi.vis{opacity:1;transform:translateY(0)}
+
+@media(max-width:860px){
+  nav{padding:1rem 1.5rem}
+  nav ul{display:none}
+  .hero,.wrap{padding-left:1.5rem;padding-right:1.5rem}
+  .tl-item{grid-template-columns:1fr;gap:1rem}
+  .tl-item::before,.tl-dot{display:none}
+  .contact-row{grid-template-columns:1fr;gap:2.5rem}
+  .f-row{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:1rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">Jason<span> Lane</span></a>
+  <ul>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certs">Certifications</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="orb o1"></div>
+  <div class="orb o2"></div>
+  <div class="hero-inner">
+    <div class="hero-label">IT Field Technician · A.A.S CIS · MCP</div>
+    <h1>Enterprise IT.<br><em>Hands On.</em><br>Done Right.</h1>
+    <p class="hero-bio">I deploy, configure, and support enterprise IT environments — endpoints, phones, printers, retail hardware, and infrastructure. 10+ years across healthcare, corporate, and retail sectors.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-p">Get in Touch &rarr;</a>
+      <a href="#experience" class="btn-o">View Experience</a>
+    </div>
+    <div class="hero-chips">
+      <span class="chip">Windows 10/11</span>
+      <span class="chip">Microsoft Intune</span>
+      <span class="chip">Active Directory</span>
+      <span class="chip">Cisco VoIP</span>
+      <span class="chip">SCCM</span>
+      <span class="chip">Azure AD / Entra ID</span>
+      <span class="chip">ServiceNow</span>
+      <span class="chip">Microsoft 365</span>
+    </div>
+  </div>
+</section>
+
+<section class="wrap wrap-alt" id="skills">
+  <div class="fi">
+    <div class="sec-tag">Technical Skills</div>
+    <h2 class="sec-h">What I Work With</h2>
+    <p class="sec-sub">A broad stack of enterprise tools across endpoint management, identity, VoIP, and hardware support.</p>
+  </div>
+  <div class="skills-grid fi">
+    <div class="skill-card">
+      <div class="sk-label">Operating Systems</div>
+      <div class="sk-items">
+        <span class="sk-item">Windows 10</span><span class="sk-item">Windows 11</span><span class="sk-item">macOS</span><span class="sk-item">iOS</span><span class="sk-item">iPadOS</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="sk-label">Identity &amp; Endpoint Management</div>
+      <div class="sk-items">
+        <span class="sk-item">Active Directory</span><span class="sk-item">Azure AD / Entra ID</span><span class="sk-item">Microsoft Intune</span><span class="sk-item">SCCM</span><span class="sk-item">Autopilot</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="sk-label">Microsoft &amp; Collaboration</div>
+      <div class="sk-items">
+        <span class="sk-item">Microsoft 365</span><span class="sk-item">Microsoft Teams</span><span class="sk-item">OneDrive</span><span class="sk-item">Authenticator</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="sk-label">Ticketing &amp; Remote Support</div>
+      <div class="sk-items">
+        <span class="sk-item">ServiceNow</span><span class="sk-item">BMC Remedy</span><span class="sk-item">Cherwell</span><span class="sk-item">TeamViewer</span><span class="sk-item">Remote Desktop</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="sk-label">VoIP &amp; Communications</div>
+      <div class="sk-items">
+        <span class="sk-item">Cisco CUCM</span><span class="sk-item">Cisco 7960 IP Phones</span><span class="sk-item">Cisco Softphones</span><span class="sk-item">Avaya Hard &amp; Soft Phones</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="sk-label">Hardware &amp; Peripherals</div>
+      <div class="sk-items">
+        <span class="sk-item">Lenovo M90s / T14</span><span class="sk-item">Dell Desktops &amp; Laptops</span><span class="sk-item">Apple Mac / iPad / iPhone</span><span class="sk-item">WOW Workstations</span><span class="sk-item">Lexmark / Canon / HP MFP</span><span class="sk-item">Fujitsu Scanners</span><span class="sk-item">Verifone PIN Pads</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="experience">
+  <div class="fi">
+    <div class="sec-tag">Work History</div>
+    <h2 class="sec-h">10+ Years in the Field</h2>
+    <p class="sec-sub">Enterprise deployments, healthcare IT, retail hardware, and everything in between.</p>
+  </div>
+  <div class="timeline fi">
+
+    <div class="tl-item">
+      <div>
+        <div class="tl-date">Apr 2026 &ndash; Present</div>
+        <div class="tl-co">AlphaTeks LLC</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <h3>Pin Pad Installation Technician</h3>
+        <div class="tl-site">Kohl's Department Stores &middot; NJ</div>
+        <ul class="tl-bullets">
+          <li>Removed Verifone MX925 devices and installed replacement Verifone M450 PIN pads per Kohl's documentation</li>
+          <li>Maintained cable hygiene: routing concealment, slack removal, trip hazard elimination, approved materials</li>
+          <li>Performed test transactions with the Manager on Duty and completed verification forms for each register</li>
+          <li>Captured and uploaded required documentation to Kohl's designated repository</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div>
+        <div class="tl-date">Jan 2026 &ndash; Mar 2026</div>
+        <div class="tl-co">CDW Inc</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <h3>IT Technical Support / Admin Support</h3>
+        <div class="tl-site">HMH, Montclair Medical Center &middot; NJ</div>
+        <ul class="tl-bullets">
+          <li>Deployed Lenovo M90s/T14, Dell, and Apple Mac systems for hospital staff</li>
+          <li>Enrolled and configured iPhones and iPads into Microsoft Intune; deployed iPhone Rover devices connected to EPIC</li>
+          <li>Installed Imprivata badge software and provided end-user authentication troubleshooting</li>
+          <li>Applied Autopilot profiles and device policies for standardized setup across all endpoints</li>
+          <li>Supported Cisco phones, Zebra label printers, Fujitsu scanners, and Ingenico credit card terminals</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div>
+        <div class="tl-date">May 2025 &ndash; Oct 2025</div>
+        <div class="tl-co">TEKsystems Inc</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <h3>IT Field Support / Contractor</h3>
+        <div class="tl-site">Erickson Senior Living &middot; Pompton Plains, NJ</div>
+        <ul class="tl-bullets">
+          <li>Upgraded 367 laptops and desktops to Windows 11 and Microsoft 365</li>
+          <li>Managed devices via Active Directory, Azure AD, SCCM, and Microsoft Intune</li>
+          <li>Migrated user data using OneDrive for Business; upgraded Office 2016 to M365</li>
+          <li>Provided L1/L2 support during phased rollout and documented all deployment procedures</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div>
+        <div class="tl-date">Jun 2022 &ndash; Mar 2025</div>
+        <div class="tl-co">ObjectWin</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <h3>IT Support Technician II</h3>
+        <div class="tl-site">AHS, Morristown Medical Center &middot; NJ</div>
+        <ul class="tl-bullets">
+          <li>Led upgrade of 2,000+ endpoints including Lenovo M90s, T14 laptops, and WOW workstations</li>
+          <li>Managed full asset lifecycle: deployment, decommissioning, recycling, CMDB accuracy</li>
+          <li>Imaged Windows 10 systems and pushed applications via SCCM; deployed IGEL Linux for Citrix VDI</li>
+          <li>Managed service requests in Cherwell; troubleshot network issues using BlueCat</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div>
+        <div class="tl-date">Mar 2022 &ndash; May 2022</div>
+        <div class="tl-co">Equity Staffing</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <h3>IT Technical Field Support</h3>
+        <div class="tl-site">Optum Inc &middot; Secaucus, NJ</div>
+        <ul class="tl-bullets">
+          <li>Managed lifecycle of desktops, laptops, iPads, iPhones, and VOIP desk phones</li>
+          <li>Imaged, configured, and deployed new systems; maintained accurate asset records</li>
+          <li>On-site support across multiple medical offices in the region</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div>
+        <div class="tl-date">Jan 2019 &ndash; May 2021</div>
+        <div class="tl-co">NCR Inc</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <h3>Desktop Support Technician</h3>
+        <div class="tl-site">BMW North America Inc &middot; Woodcliff Lakes, NJ</div>
+        <ul class="tl-bullets">
+          <li>Imaged and deployed PCs, laptops, iPads, and iPhones for new employee onboarding</li>
+          <li>Diagnosed LAN connectivity issues from wall ports to patch panels and switches</li>
+          <li>Managed AD accounts: unlocks, resets, permissions, and group policy configuration</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div>
+        <div class="tl-date">Apr 2014 &ndash; Oct 2018</div>
+        <div class="tl-co">Realogy Inc</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <h3>IT Helpdesk Support</h3>
+        <div class="tl-site">Madison, NJ</div>
+        <ul class="tl-bullets">
+          <li>Tier 1/2 IT support for realtors and brokers across broker offices</li>
+          <li>Troubleshot hardware, software, network issues including WAPs, routers, and local infrastructure</li>
+          <li>Managed AD accounts and administered Group Policy Objects (GPOs)</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="wrap wrap-alt" id="certs">
+  <div class="fi">
+    <div class="sec-tag">Education &amp; Certifications</div>
+    <h2 class="sec-h">Credentials</h2>
+    <p class="sec-sub">Formally trained and certified across Microsoft systems and IT infrastructure fundamentals.</p>
+  </div>
+  <div class="certs-grid fi">
+    <div class="cert-card">
+      <div class="cert-icon">&#9672;</div>
+      <h4>A.A.S &mdash; Computer Information Systems</h4>
+      <p>DeVry University, Woodbridge NJ</p>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">&#9673;</div>
+      <h4>CompTIA A+ Certification</h4>
+      <p>Passaic County Community College</p>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">&#11041;</div>
+      <h4>Microsoft Certified Professional (MCP)</h4>
+      <p>5 Certifications: Network Essentials, NT Workstation, NT Server, NT Server Enterprise, TCP/IP</p>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">&#9670;</div>
+      <h4>Microsoft System Engineer Certificate</h4>
+      <p>Alphatrain, Union NJ &mdash; Windows NT, Exchange, IIS, Networking Essentials</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="contact">
+  <div class="contact-row">
+    <div class="fi">
+      <div class="sec-tag">Contact</div>
+      <h2 class="sec-h">Let's Work Together.</h2>
+      <p class="c-info">Available for contract, contract-to-hire, and full-time IT field roles across NJ and the surrounding area.</p>
+      <div class="c-items">
+        <div class="c-item"><div class="c-icon">&#9993;</div><span>mrjasonlane@gmail.com</span></div>
+        <div class="c-item"><div class="c-icon">&#9743;</div><span>(862) 257-0078</span></div>
+        <div class="c-item"><div class="c-icon">&#9677;</div><span>Paterson, NJ &mdash; available on-site</span></div>
+      </div>
+    </div>
+    <div class="c-form fi">
+      <div class="f-row">
+        <div class="f-grp"><label>Your Name</label><input type="text" placeholder="Jane Smith"></div>
+        <div class="f-grp"><label>Company</label><input type="text" placeholder="Acme Corp"></div>
+      </div>
+      <div class="f-grp"><label>Email</label><input type="email" placeholder="jane@acmecorp.com"></div>
+      <div class="f-grp">
+        <label>Opportunity Type</label>
+        <select>
+          <option value="">Select...</option>
+          <option>Contract / Temp</option>
+          <option>Contract-to-Hire</option>
+          <option>Full-Time</option>
+          <option>Project-Based</option>
+        </select>
+      </div>
+      <div class="f-grp"><label>Message</label><textarea placeholder="Tell me about the role or project..."></textarea></div>
+      <button class="f-sub">Send Message &rarr;</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">Jason Lane</div>
+  <p>&copy; 2026 Jason Lane &middot; IT Field Technician &middot; Paterson, NJ</p>
+  <ul class="f-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certs">Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')}),{threshold:.1});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
