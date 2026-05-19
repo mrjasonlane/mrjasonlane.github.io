@@ -213,7 +213,7 @@ footer p{font-size:.75rem;color:var(--muted)}
     <div class="tl-item">
       <div>
         <div class="tl-date">Apr 2026 &ndash; Present</div>
-        <div class="tl-co">AlphaTeks LLC</div>
+        <div class="tl-co">TEKsystems Inc</div>
       </div>
       <div class="tl-dot"></div>
       <div class="tl-body">
@@ -380,26 +380,23 @@ footer p{font-size:.75rem;color:var(--muted)}
       </div>
     </div>
     <div class="c-form fi">
-      <form action="https://formspree.io/f/xdajkgve" method="POST" id="contact-form">
-        <div class="f-row">
-          <div class="f-grp"><label for="name">Your Name</label><input id="name" type="text" name="name" placeholder="Jane Smith" required></div>
-          <div class="f-grp"><label for="company">Company</label><input id="company" type="text" name="company" placeholder="Acme Corp"></div>
-        </div>
-        <div class="f-grp"><label for="email">Email</label><input id="email" type="email" name="email" placeholder="jane@acmecorp.com" required></div>
-        <div class="f-grp">
-          <label for="opportunity">Opportunity Type</label>
-          <select id="opportunity" name="opportunity">
-            <option value="">Select...</option>
-            <option>Contract / Temp</option>
-            <option>Contract-to-Hire</option>
-            <option>Full-Time</option>
-            <option>Project-Based</option>
-          </select>
-        </div>
-        <div class="f-grp"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell me about the role or project..." required></textarea></div>
-        <button type="submit" class="f-sub" id="submit-btn">Send Message &rarr;</button>
-        <p id="form-status" style="margin-top:.75rem;font-family:var(--fm);font-size:.72rem;text-align:center;display:none"></p>
-      </form>
+      <div class="f-row">
+        <div class="f-grp"><label>Your Name</label><input type="text" placeholder="Jane Smith"></div>
+        <div class="f-grp"><label>Company</label><input type="text" placeholder="Acme Corp"></div>
+      </div>
+      <div class="f-grp"><label>Email</label><input type="email" placeholder="jane@acmecorp.com"></div>
+      <div class="f-grp">
+        <label>Opportunity Type</label>
+        <select>
+          <option value="">Select...</option>
+          <option>Contract / Temp</option>
+          <option>Contract-to-Hire</option>
+          <option>Full-Time</option>
+          <option>Project-Based</option>
+        </select>
+      </div>
+      <div class="f-grp"><label>Message</label><textarea placeholder="Tell me about the role or project..."></textarea></div>
+      <button class="f-sub">Send Message &rarr;</button>
     </div>
   </div>
 </section>
@@ -418,43 +415,6 @@ footer p{font-size:.75rem;color:var(--muted)}
 <script>
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')}),{threshold:.1});
 document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
-
-// Formspree AJAX submission
-const form = document.getElementById('contact-form');
-const status = document.getElementById('form-status');
-const submitBtn = document.getElementById('submit-btn');
-
-form.addEventListener('submit', async function(e) {
-  e.preventDefault();
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Sending...';
-  status.style.display = 'none';
-
-  try {
-    const res = await fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    });
-
-    if (res.ok) {
-      status.textContent = '✓ Message sent! I\'ll be in touch soon.';
-      status.style.color = '#4ade80';
-      status.style.display = 'block';
-      form.reset();
-      submitBtn.textContent = 'Send Message →';
-      submitBtn.disabled = false;
-    } else {
-      throw new Error('Server error');
-    }
-  } catch(err) {
-    status.textContent = '✗ Something went wrong. Please email mrjasonlane@gmail.com directly.';
-    status.style.color = '#f87171';
-    status.style.display = 'block';
-    submitBtn.textContent = 'Send Message →';
-    submitBtn.disabled = false;
-  }
-});
 </script>
 </body>
 </html>
